@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.vsa5edu'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//for spring
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//for jinq (linq)
+	implementation 'org.jinq:jinq:1.8.31'
+	implementation 'org.jinq:jinq-jpa:2.0.2'
+	//for redis
+	implementation 'redis.clients:jedis:4.3.1'
+	//for mongodb
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	//for jwt
+	implementation 'com.auth0:java-jwt:4.4.0'
+	//jdbc postgres driver
+	runtimeOnly 'org.postgresql:postgresql'
+	//for tests junit5
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//swagger openaoi
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+}
+
+//task for start tests
+tasks.named('test') {
+	useJUnitPlatform()
+}
